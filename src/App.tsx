@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { 
-  Wrench, 
   ShieldCheck, 
   Sparkles, 
   HardHat, 
@@ -108,25 +107,21 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
           
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 flex items-center justify-center bg-indigo-600 text-white rounded overflow-hidden group-hover:bg-indigo-700 transition-all duration-300">
-              {!logoError ? (
-                <img 
-                  src="/logo.png" 
-                  alt="SREDA" 
-                  className="w-full h-full object-cover"
-                  onError={() => setLogoError(true)}
-                  referrerPolicy="no-referrer"
-                />
-              ) : (
-                <Wrench className="w-5 h-5" />
-              )}
+          <a href="#" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-300">
+              <img 
+                src="/logo.png" 
+                alt="SREDA" 
+                className="w-full h-full object-contain"
+                referrerPolicy="no-referrer"
+              />
             </div>
-            <div>
-              <span className="font-display font-black text-2xl tracking-tight text-slate-900 block leading-none">
-                SRE<span className="text-indigo-600">DA</span>
+            <div className="relative">
+              <span className="font-display font-black text-3xl tracking-tighter text-slate-900 block leading-none relative">
+                <span className="relative z-10">SRE</span><span className="text-indigo-600 relative z-10">DA</span>
+                <span className="absolute -bottom-1 left-0 w-full h-2 bg-indigo-600/10 group-hover:bg-indigo-600/20 transition-colors -z-0"></span>
               </span>
-              <span className="text-[9px] font-mono tracking-widest text-slate-400 block uppercase mt-0.5">
+              <span className="text-[9px] font-mono tracking-[0.2em] text-slate-400 block uppercase mt-1 ml-0.5">
                 строительная компания
               </span>
             </div>
@@ -169,7 +164,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Text Column */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-6 space-y-6">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-extrabold text-slate-900 tracking-tight leading-none">
               Профессиональный Ремонт Квартир в Москве <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-700">под ключ</span>
             </h1>
@@ -213,10 +208,10 @@ export default function App() {
           </div>
 
           {/* Right Image/Feature Panel */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative aspect-4/3 rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-slate-100">
+          <div className="lg:col-span-6 relative">
+            <div className="relative aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-slate-100">
               <img
-                src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80"
+                src="/главное фото-clean.png"
                 alt="Красивый готовый интерьер квартиры"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
@@ -235,7 +230,7 @@ export default function App() {
 
               {/* Overlaid Bottom Status Bar */}
               <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-3.5 rounded-xl border border-slate-200 shadow-lg flex items-center gap-3">
-                <div className="bg-emerald-100 text-emerald-800 p-2 rounded-lg flex-shrink-0">
+                <div className="bg-indigo-100 text-indigo-800 p-2 rounded-lg flex-shrink-0">
                   <HardHat className="w-4 h-4" />
                 </div>
                 <div>
@@ -550,22 +545,20 @@ export default function App() {
           {/* Company identity */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 flex items-center justify-center bg-indigo-600 text-white rounded overflow-hidden">
-                {!footerLogoError ? (
-                  <img 
-                    src="/logo.png" 
-                    alt="SREDA" 
-                    className="w-full h-full object-cover"
-                    onError={() => setFooterLogoError(true)}
-                    referrerPolicy="no-referrer"
-                  />
-                ) : (
-                  <Wrench className="w-5 h-5" />
-                )}
+              <div className="w-9 h-9 flex items-center justify-center overflow-hidden">
+                <img 
+                  src="/logo.png" 
+                  alt="SREDA" 
+                  className="w-full h-full object-contain"
+                  referrerPolicy="no-referrer"
+                />
               </div>
-              <span className="font-display font-black text-2xl tracking-tight text-white block leading-none">
-                SRE<span className="text-indigo-500">DA</span>
-              </span>
+              <div className="relative">
+                <span className="font-display font-black text-2xl tracking-tighter text-white block leading-none relative">
+                  <span className="relative z-10">SRE</span><span className="text-indigo-400 relative z-10">DA</span>
+                  <span className="absolute -bottom-0.5 left-0 w-full h-1.5 bg-indigo-500/20 -z-0"></span>
+                </span>
+              </div>
             </div>
             
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm font-sans">
