@@ -2,6 +2,12 @@ import { useState, useRef, useEffect, MouseEvent as ReactMouseEvent, TouchEvent 
 import { ArrowLeftRight, HelpCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
+// Helper function to get correct asset path for GitHub Pages
+const getAssetPath = (path: string) => {
+  const base = import.meta.env.BASE_URL || '/';
+  return `${base}${path}`.replace(/\/\//g, '/');
+};
+
 interface SliderData {
   id: string;
   title: string;
@@ -17,8 +23,8 @@ const SLIDERS: SliderData[] = [
     id: 'living-room',
     title: 'Евротрешка в ЖК «Скандинавия»',
     desc: 'Комплексный дизайнерский ремонт под ключ для молодой семьи. Особенность проекта — бесшовное зонирование раздвижными перегородками и скрытые двери.',
-    before: '/scandinavia-before.png',
-    after: '/scandinavia-after.png',
+    before: getAssetPath('scandinavia-before.png'),
+    after: getAssetPath('scandinavia-after.png'),
     tags: ['Скандинавский стиль', 'Площадь: 72 м²', 'Срок: 65 дней'],
     details: [
       { label: 'Теневой потолок', value: 'с подсветкой по всему периметру' },
@@ -29,8 +35,8 @@ const SLIDERS: SliderData[] = [
     id: 'bathroom',
     title: 'Мастер-санузел в ЖК «Резиденции»',
     desc: 'Ванная комната премиум-класса с отдельно стоящей ванной и подвесным унитазом с инсталляцией. Установлена система защиты от протечек воды.',
-    before: '/residence-before.png',
-    after: '/residence-after.png',
+    before: getAssetPath('residence-before.png'),
+    after: getAssetPath('residence-after.png'),
     tags: ['Премиум-класс', 'Площадь: 8.5 м²', 'Срок: 16 дней'],
     details: [
       { label: 'Материал', value: 'керамогранит с заусовкой под 45°' },
@@ -41,8 +47,8 @@ const SLIDERS: SliderData[] = [
     id: 'kitchen',
     title: 'Кухня-гостиная на Патриарших',
     desc: 'Интеграция кухонной зоны в жилую комнату с премиальной шумоизоляцией пола и стен. Классические молдинги на стенах в сочетании с современными материалами.',
-    before: '/patriarshie-before.png',
-    after: '/patriarshie-after.png',
+    before: getAssetPath('patriarshie-before.png'),
+    after: getAssetPath('patriarshie-after.png'),
     tags: ['Неоклассика', 'Площадь: 28 м²', 'Срок: 28 дней'],
     details: [
       { label: 'Шумоизоляция', value: 'панели Soundguard на полу и стенах' },

@@ -3,14 +3,20 @@ import { PortfolioItem } from '../types';
 import { Eye, Clock, Ruler, Landmark, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
+// Helper function to get correct asset path for GitHub Pages
+const getAssetPath = (path: string) => {
+  const base = import.meta.env.BASE_URL || '/';
+  return `${base}${path}`.replace(/\/\//g, '/');
+};
+
 const PORTFOLIO_ITEMS: PortfolioItem[] = [
   {
     id: 'proj-1',
     title: 'Евротрешка в ЖК «Скандинавия»',
     description: 'Комплексный дизайнерский ремонт под ключ для молодой семьи. Особенность проекта — бесшовное зонирование раздвижными перегородками и скрытые двери.',
     category: 'full-apartment',
-    beforeImage: '/scandinavia-before.png',
-    afterImage: '/scandinavia-after.png',
+    beforeImage: getAssetPath('scandinavia-before.png'),
+    afterImage: getAssetPath('scandinavia-after.png'),
     duration: '65 дней',
     cost: 1680000,
     area: 72,
@@ -29,8 +35,8 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: 'Кухня-гостиная на Патриарших',
     description: 'Интеграция кухонной зоны в жилую комнату с премиальной шумоизоляцией пола и стен. Классические молдинги на стенах в сочетании с современными материалами.',
     category: 'kitchen',
-    beforeImage: '/patriarshie-before.png',
-    afterImage: '/patriarshie-after.png',
+    beforeImage: getAssetPath('patriarshie-before.png'),
+    afterImage: getAssetPath('patriarshie-after.png'),
     duration: '28 дней',
     cost: 720000,
     area: 28,
@@ -48,8 +54,8 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: 'Мастер-санузел в ЖК «Резиденции»',
     description: 'Ванная комната премиум-класса с отдельно стоящей ванной и подвесным унитазом с инсталляцией. Установлена система защиты от протечек воды.',
     category: 'bathroom',
-    beforeImage: '/residence-before.png',
-    afterImage: '/residence-after.png',
+    beforeImage: getAssetPath('residence-before.png'),
+    afterImage: getAssetPath('residence-after.png'),
     duration: '16 дней',
     cost: 450000,
     area: 8.5,
@@ -87,7 +93,7 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     description: 'Оптимизация пространства студии для сдачи в аренду. Зонирование мебелью и стеклянной перегородкой. Бюджетный, но износостойкий ремонт.',
     category: 'full-apartment',
     beforeImage: 'https://images.unsplash.com/photo-1560185127-6a2806647f81?auto=format&fit=crop&w=800&q=80',
-    afterImage: '/metropolia-after.png',
+    afterImage: getAssetPath('metropolia-after.png'),
     duration: '25 дней',
     cost: 590000,
     area: 31,
@@ -106,7 +112,7 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     description: 'Капитальный ремонт гостиной в историческом центре Москвы. Сохранение лепного декора, замена напольных балок, укладка классической паркетной «елочки».',
     category: 'living-room',
     beforeImage: 'https://images.unsplash.com/photo-1584622781564-1d987f7333c1?auto=format&fit=crop&w=800&q=80',
-    afterImage: '/classic-after.png',
+    afterImage: getAssetPath('classic-after.png'),
     duration: '45 дней',
     cost: 1150000,
     area: 36,

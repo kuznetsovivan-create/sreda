@@ -18,6 +18,12 @@ import Portfolio from './components/Portfolio';
 import FeedbackForm from './components/FeedbackForm';
 import { Testimonial } from './types';
 
+// Helper function to get correct asset path for GitHub Pages
+const getAssetPath = (path: string) => {
+  const base = import.meta.env.BASE_URL || '/';
+  return `${base}${path}`.replace(/\/\//g, '/');
+};
+
 const TESTIMONIALS: Testimonial[] = [
   {
     id: 'test-1',
@@ -72,9 +78,6 @@ const FAQS = [
 ];
 
 export default function App() {
-  const [logoError, setLogoError] = useState(false);
-  const [footerLogoError, setFooterLogoError] = useState(false);
-
   const [selectedEstimate, setSelectedEstimate] = useState<{
     area: number;
     roomCount: number;
@@ -110,7 +113,7 @@ export default function App() {
           <a href="#" className="flex items-center gap-3 group">
             <div className="w-10 h-10 flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-300">
               <img 
-                src="/logo.png" 
+                src={getAssetPath("logo.png")} 
                 alt="SREDA" 
                 className="w-full h-full object-contain"
                 referrerPolicy="no-referrer"
@@ -211,7 +214,7 @@ export default function App() {
           <div className="lg:col-span-6 relative">
             <div className="relative aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-slate-100">
               <img
-                src="/hero-image.png"
+                src={getAssetPath("hero-image.png")}
                 alt="Красивый готовый интерьер квартиры"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
@@ -547,7 +550,7 @@ export default function App() {
             <div className="flex items-center gap-2.5">
               <div className="w-9 h-9 flex items-center justify-center overflow-hidden">
                 <img 
-                  src="/logo.png" 
+                  src={getAssetPath("logo.png")} 
                   alt="SREDA" 
                   className="w-full h-full object-contain"
                   referrerPolicy="no-referrer"
