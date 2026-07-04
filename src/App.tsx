@@ -32,8 +32,7 @@ const TESTIMONIALS: Testimonial[] = [
     role: 'Владелица квартиры в ЖК «Лесной»',
     text: 'Заказывали капитальный ремонт двухкомнатной квартиры. Очень переживали за сроки и раздувание бюджета, но в итоге остались в полнейшем восторге! Смета была зафиксирована в договоре и не выросла ни на один рубль. Все материалы прораб закупал сам со скидкой, предоставлял отчеты. Закончили даже на 3 дня раньше срока!',
     rating: 5,
-    date: '14 мая 2026 г.',
-    avatarUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&h=120&q=80'
+    date: '14 мая 2026 г.'
   },
   {
     id: 'test-2',
@@ -41,8 +40,7 @@ const TESTIMONIALS: Testimonial[] = [
     role: 'Владелец апартаментов в Москва-Сити',
     text: 'Нам нужен был сложный дизайнерский ремонт по готовому проекту. Мастера из этой компании — настоящие профессионалы. Идеально выполнили заусовку керамогранита под 45 градусов в санузле, смонтировали теневые профили для натяжных потолков и скрытую подсветку. Качество стыков материалов — ювелирное. Однозначно рекомендую!',
     rating: 5,
-    date: '28 апреля 2026 г.',
-    avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=80'
+    date: '28 апреля 2026 г.'
   },
   {
     id: 'test-3',
@@ -50,8 +48,7 @@ const TESTIMONIALS: Testimonial[] = [
     role: 'Владелец студии на Волгоградке',
     text: 'Заказывал косметический ремонт студии под сдачу в аренду. Бюджет был сильно ограничен. Мне предложили отличный эконом-вариант: подобрали очень прочные обои под покраску, износостойкий линолеум и быстро привели квартиру в товарный вид за 12 дней! Работали слаженно, мусор за собой полностью убрали.',
     rating: 5,
-    date: '02 июня 2026 г.',
-    avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&h=120&q=80'
+    date: '02 июня 2026 г.'
   }
 ];
 
@@ -455,12 +452,9 @@ export default function App() {
 
                 {/* Author Info */}
                 <div className="flex items-center gap-3 pt-4 border-t border-slate-100">
-                  <img
-                    src={test.avatarUrl}
-                    alt={test.author}
-                    className="w-11 h-11 rounded-full object-cover border border-slate-200"
-                    referrerPolicy="no-referrer"
-                  />
+                  <div className="w-11 h-11 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center">
+                    <User className="w-6 h-6 text-slate-400" />
+                  </div>
                   <div>
                     <span className="font-sans font-bold text-xs text-slate-900 block leading-tight">
                       {test.author}

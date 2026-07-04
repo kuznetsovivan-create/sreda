@@ -28,7 +28,6 @@ export interface Testimonial {
   text: string;
   rating: number;
   date: string;
-  avatarUrl: string;
 }
 
 export interface ConsultationRequest {
