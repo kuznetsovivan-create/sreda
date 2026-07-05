@@ -23,8 +23,8 @@ const SLIDERS: SliderData[] = [
     id: 'living-room',
     title: 'Евротрешка в ЖК «Скандинавия»',
     desc: 'Комплексный дизайнерский ремонт под ключ для молодой семьи. Особенность проекта — бесшовное зонирование раздвижными перегородками и скрытые двери.',
-    before: getAssetPath('scandinavia-before.png'),
-    after: getAssetPath('scandinavia-after.png'),
+    before: getAssetPath('scandinavia-before.avif'),
+    after: getAssetPath('scandinavia-after.avif'),
     tags: ['Скандинавский стиль', 'Площадь: 72 м²', 'Срок: 65 дней'],
     details: [
       { label: 'Теневой потолок', value: 'с подсветкой по всему периметру' },
@@ -35,8 +35,8 @@ const SLIDERS: SliderData[] = [
     id: 'bathroom',
     title: 'Мастер-санузел в ЖК «Резиденции»',
     desc: 'Ванная комната премиум-класса с отдельно стоящей ванной и подвесным унитазом с инсталляцией. Установлена система защиты от протечек воды.',
-    before: getAssetPath('residence-before.png'),
-    after: getAssetPath('residence-after.png'),
+    before: getAssetPath('residence-before.avif'),
+    after: getAssetPath('residence-after.avif'),
     tags: ['Премиум-класс', 'Площадь: 8.5 м²', 'Срок: 16 дней'],
     details: [
       { label: 'Материал', value: 'керамогранит с заусовкой под 45°' },
