@@ -186,11 +186,6 @@ export default function BeforeAfterSlider() {
                 className="absolute inset-0 w-full h-full object-cover pointer-events-none"
                 referrerPolicy="no-referrer"
               />
-              
-              {/* Label "После" */}
-              <div className="absolute right-4 bottom-4 z-10 bg-emerald-500/90 text-white font-mono text-xs font-bold px-3 py-1.5 rounded-md backdrop-blur-xs tracking-wider shadow-md pointer-events-none uppercase">
-                После ремонта
-              </div>
 
               {/* Before image (Overlay clipped by clip-path) */}
               <div 
@@ -203,14 +198,6 @@ export default function BeforeAfterSlider() {
                   style={{ width: containerRef.current?.getBoundingClientRect().width }}
                   referrerPolicy="no-referrer"
                 />
-              </div>
-
-              {/* Label "До" */}
-              <div 
-                className="absolute left-4 bottom-4 z-10 bg-red-600/90 text-white font-mono text-xs font-bold px-3 py-1.5 rounded-md backdrop-blur-xs tracking-wider shadow-md pointer-events-none uppercase transition-opacity duration-300"
-                style={{ opacity: sliderPosition < 15 ? 0 : 1 }}
-              >
-                Черновой этап / До
               </div>
 
               {/* Centered Guide Tooltip (shows initially) */}

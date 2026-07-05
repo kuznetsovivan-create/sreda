@@ -120,7 +120,6 @@ export default function App() {
             <div className="relative">
               <span className="font-display font-black text-3xl tracking-tighter text-slate-900 block leading-none relative">
                 <span className="relative z-10">SRE</span><span className="text-indigo-600 relative z-10">DA</span>
-                <span className="absolute -bottom-1 left-0 w-full h-2 bg-indigo-600/10 group-hover:bg-indigo-600/20 transition-colors -z-0"></span>
               </span>
               <span className="text-[9px] font-mono tracking-[0.2em] text-slate-400 block uppercase mt-1 ml-0.5">
                 строительная компания
