@@ -468,7 +468,11 @@ export default function App() {
       <Portfolio />
 
       {/* CLIENT REVIEWS / TESTIMONIALS - AUTO SCROLLING */}
-      <section id="reviews-section" className="py-20 bg-slate-50 border-t border-slate-200 overflow-hidden">
+      <section id="reviews-section" className="py-20 bg-slate-50 border-t border-slate-200 overflow-hidden relative">
+        {/* Gradient Overlays for fade effect - positioned relative to viewport */}
+        <div className="absolute left-0 top-0 bottom-0 w-48 md:w-64 bg-gradient-to-r from-slate-50 via-slate-50/80 to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-48 md:w-64 bg-gradient-to-l from-slate-50 via-slate-50/80 to-transparent z-10 pointer-events-none"></div>
+
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           
           {/* Header */}
@@ -485,13 +489,9 @@ export default function App() {
           </div>
 
           {/* Auto-Scrolling Testimonial Cards Container */}
-          <div className="relative">
-            {/* Gradient Overlays for fade effect */}
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none"></div>
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none"></div>
-
+          <div className="relative -mx-4 md:-mx-8">
             {/* Scrolling wrapper */}
-            <div className="flex gap-6 animate-scroll-left hover:[animation-play-state:paused]">
+            <div className="flex gap-6 animate-scroll-left hover:[animation-play-state:paused] pl-4 md:pl-8">
               {/* First set of testimonials */}
               {TESTIMONIALS.map((test) => (
                 <div 
