@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect, MouseEvent as ReactMouseEvent, TouchEvent as ReactTouchEvent, KeyboardEvent, CSSProperties } from 'react';
 import { ArrowLeftRight, HelpCircle } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
 
 // Helper function to get correct asset path for GitHub Pages
 const getAssetPath = (path: string) => {
@@ -61,9 +60,28 @@ export default function BeforeAfterSlider() {
   const [activeTab, setActiveTab] = useState<string>('living-room');
   const [sliderPosition, setSliderPosition] = useState<number>(50); // percentage 0-100
   const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [imagesLoaded, setImagesLoaded] = useState<Record<string, boolean>>({});
   const containerRef = useRef<HTMLDivElement>(null);
 
   const activeSlider = SLIDERS.find(s => s.id === activeTab) || SLIDERS[0];
+
+  // Preload images
+  useEffect(() => {
+    SLIDERS.forEach((slider) => {
+      const beforeImg = new Image();
+      const afterImg = new Image();
+      
+      beforeImg.src = slider.before;
+      afterImg.src = slider.after;
+      
+      Promise.all([
+        new Promise(resolve => beforeImg.onload = resolve),
+        new Promise(resolve => afterImg.onload = resolve)
+      ]).then(() => {
+        setImagesLoaded(prev => ({ ...prev, [slider.id]: true }));
+      });
+    });
+  }, []);
 
   // Reset position slightly when switching tabs for a nice visual effect
   useEffect(() => {
@@ -199,25 +217,6 @@ export default function BeforeAfterSlider() {
                   referrerPolicy="no-referrer"
                 />
               </div>
-
-              {/* Centered Guide Tooltip (shows initially) */}
-              <AnimatePresence>
-                {sliderPosition === 50 && !isDragging && (
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    className="absolute inset-0 flex items-center justify-center bg-black/35 backdrop-blur-xs pointer-events-none z-20"
-                  >
-                    <div className="bg-white/95 text-slate-900 px-4 py-2.5 rounded-xl shadow-xl flex items-center gap-2 border border-slate-200">
-                      <ArrowLeftRight className="w-5 h-5 text-indigo-600 animate-pulse" />
-                      <span className="font-sans text-xs font-semibold tracking-wide">
-                        Потяните в стороны
-                      </span>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
 
               {/* Slider Divider Line */}
               <div 
