@@ -60,8 +60,10 @@ export default function BeforeAfterSlider() {
   const [activeTab, setActiveTab] = useState<string>('living-room');
   const [sliderPosition, setSliderPosition] = useState<number>(50); // percentage 0-100
   const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [isAutoPlaying, setIsAutoPlaying] = useState<boolean>(true);
   const [imagesLoaded, setImagesLoaded] = useState<Record<string, boolean>>({});
   const containerRef = useRef<HTMLDivElement>(null);
+  const autoPlayTimeoutRef = useRef<number | null>(null);
 
   const activeSlider = SLIDERS.find(s => s.id === activeTab) || SLIDERS[0];
 
@@ -83,10 +85,46 @@ export default function BeforeAfterSlider() {
     });
   }, []);
 
-  // Reset position slightly when switching tabs for a nice visual effect
+  // Reset position and restart autoplay when switching tabs
   useEffect(() => {
     setSliderPosition(50);
+    setIsAutoPlaying(true);
   }, [activeTab]);
+
+  // Auto-play animation
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const animate = () => {
+      setSliderPosition((prev) => {
+        // Плавное движение туда-сюда (0 -> 100 -> 0)
+        const speed = 0.3; // скорость движения
+        const direction = Math.sin(Date.now() / 2000) > 0 ? 1 : -1;
+        const newPos = prev + (direction * speed);
+        
+        // Используем синусоиду для плавного движения
+        const time = Date.now() / 3000; // 3 секунды на полный цикл
+        return 50 + Math.sin(time) * 45; // от 5 до 95
+      });
+
+      if (isAutoPlaying) {
+        autoPlayTimeoutRef.current = requestAnimationFrame(animate);
+      }
+    };
+
+    autoPlayTimeoutRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (autoPlayTimeoutRef.current) {
+        cancelAnimationFrame(autoPlayTimeoutRef.current);
+      }
+    };
+  }, [isAutoPlaying]);
+
+  // Остановить автоплей при взаимодействии пользователя
+  const stopAutoPlay = () => {
+    setIsAutoPlaying(false);
+  };
 
   const handleMove = (clientX: number) => {
     if (!containerRef.current) return;
@@ -94,6 +132,7 @@ export default function BeforeAfterSlider() {
     const x = clientX - rect.left;
     const position = Math.max(0, Math.min(100, (x / rect.width) * 100));
     setSliderPosition(position);
+    stopAutoPlay(); // Остановить автоплей при ручном управлении
   };
 
   const handleMouseMove = (e: MouseEvent) => {
@@ -130,18 +169,22 @@ export default function BeforeAfterSlider() {
   const handleMouseDown = (e: ReactMouseEvent) => {
     e.preventDefault();
     setIsDragging(true);
+    stopAutoPlay(); // Остановить автоплей при начале перетаскивания
   };
 
   const handleTouchStart = () => {
     setIsDragging(true);
+    stopAutoPlay(); // Остановить автоплей при начале касания
   };
 
   // Keyboard navigation for slider accessibility
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'ArrowLeft') {
       setSliderPosition(prev => Math.max(0, prev - 5));
+      stopAutoPlay(); // Остановить автоплей при клавиатурном управлении
     } else if (e.key === 'ArrowRight') {
       setSliderPosition(prev => Math.min(100, prev + 5));
+      stopAutoPlay(); // Остановить автоплей при клавиатурном управлении
     }
   };
 
